@@ -1,0 +1,92 @@
+.icon-button
+    $this: &
+    display: block
+    position: relative
+    width: 20px
+    height: 20px
+    font-size: 0
+
+    &::before, &::after
+       content: ''
+       position: absolute
+       width: 16px
+       height: 16px
+       left: 2px
+       top: 2px
+       background-size: contain
+       background-position: center center
+       background-repeat: no-repeat
+    
+    &::after
+        opacity: 0
+        transition: opacity 0.25s
+
+    &:hover
+        &::after
+            opacity: 1
+
+    &_sign
+        &::before
+            background-image: url(/app/img/icons/sign.svg)
+
+        &::after
+            background-image: url(/app/img/icons/sign-active.svg)
+
+        &#{$this}.is-active
+            &::before
+                background-image: url(/app/img/icons/sign-active.svg)
+            &::after
+               display: none 
+
+        &#{$this}.is-disabled
+            &::before
+                opacity: 0.3
+            &::after
+               display: none 
+
+    &_delete
+        &::before
+            background-image: url(/app/img/icons/delete.svg)
+
+        &::after
+            background-image: url(/app/img/icons/delete-active.svg)
+
+    &_edit
+        &::before
+            background-image: url(/app/img/icons/edit.svg)
+        &::after
+            display: none
+
+    &_attach
+        &::before
+            background-image: url(/app/img/icons/attach.svg)
+        &::after
+            display: none
+
+    &_show
+        &::before
+            background-image: url(/app/img/icons/show-active.svg)
+        &::after
+            display: none
+
+        &_hover
+            &::before
+                background-image: url(/app/img/icons/show.svg)
+            &::after
+                display: block
+                background-image: url(/app/img/icons/show-active.svg)
+    
+    &_download
+        &::before
+            background-size: 12px 12px
+            background-image: url(/app/img/icons/download.svg)
+        &::after
+            display: none
+
+    &_dots
+        &::before
+            background-image: url(/app/img/icons/dots.svg)
+        &::after
+            display: none 
+
+

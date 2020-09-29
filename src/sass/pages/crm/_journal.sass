@@ -1,0 +1,54 @@
+.journal
+    $this: &
+    &__row
+        display: flex
+        border: 1px solid var(--color-line)
+        border-bottom: none
+
+        &:hover
+            background-color: var(--color-background)
+
+        &:last-child
+            border-bottom: 1px solid var(--color-line)
+
+    &__level
+        width: 40px
+        flex-shrink: 0
+        background-color: transparent
+        border-right: 1px solid var(--color-line)
+        &_first
+            background-color: var(--color-line)
+
+        &_second
+            background-color: var(--color-background)
+
+    &__item
+        width: 100%
+        padding-left: 12px
+    
+    &__text
+        position: relative
+        line-height: 1.5
+        &::before
+            content: ''
+            position: absolute
+            left: 0
+            right: 0
+            bottom: 1px
+            border-bottom: 1px dashed  var(--color-text-primary)
+            opacity: 0
+        &_med
+            font-size: 14px            
+        &_big
+            font-size: 18px
+
+
+    &__link
+        display: block
+        color: var(--color-text-primary)
+        text-decoration: none
+
+        &:focus
+            #{$this}__text
+                &::before
+                   opacity: 1 

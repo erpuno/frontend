@@ -1,0 +1,519 @@
+/* FORMS -------------------------------------------- */ 
+
+.form
+    width: 100%
+    background-color: var(--color-base)
+    display: inline-block
+    +clr
+    .caption
+        text-align: center
+        font-size: 16px
+        margin-bottom: 15px
+    .box
+        margin-bottom: 8px
+        +clr
+    .buttons
+        font-size: 0
+        text-align: right
+        width: 100%
+        margin: 15px 0 20px
+        padding-right: calc(16.67% - 2px)
+        .button
+            &:not(:last-of-type)
+                margin-right: 8px
+    
+    .dropdown-item
+        text-align: left
+
+
+.item
+  background-color: #99AFDA
+  color: #666
+  float: left
+  min-width: 186px
+  width: 23%
+  text-align: center
+
+  a
+    text-decoration: none
+    display: block
+    color: inherit
+    padding: 7px 7px 7px 7px
+
+    &:hover
+      background-color: #f0f0f0
+
+  &.active
+    padding: 7px 7px 7px 7px
+    background-color: #3E61AC
+    color: #f0f0f0
+
+.submenu
+  background-color: #3E61AC
+  color: #f0f0f0
+  padding: 5px
+
+  .item
+    min-width: 100px
+    color: #f0f0f0
+    background-color: inherit
+    width: auto
+    margin-right: 3px
+
+    a:hover
+      border-radius: 5px
+      color: #666
+      background-color: #f0f0f0
+
+    &.active
+      border-radius: 5px
+      color: #666
+      background-color: #99AFDA
+
+.section
+  background-color: #f0f0f0
+  border-top: 1px solid #e4e4e4
+
+  .column33, .column67
+    display: table
+    height: 60px
+
+  .column, .column6, .column2
+    float: none
+    display: table-cell
+    vertical-align: middle
+    min-width: 100px
+    text-align: center
+
+.contribution
+  padding: 0 10px 10px
+
+  p
+    padding-left: 10px
+    margin-top: -10px
+
+  ul
+    margin-top: -10px
+    margin-bottom: 5px
+
+
+
+.field
+  float: left
+  width: 100%
+  text-align: left
+  padding: 1px
+
+.select-field
+  select
+    display: none
+
+
+.label
+  width: 33.33%
+  float: left
+  padding: 0 10px
+  text-align: right
+  color: var(--color-text-primary)
+  font-size: 12px
+  line-height: 16px
+  position: relative
+  top: 5px
+  word-break: break-word
+
+  &.large
+    padding-top: 1px
+
+.arrow
+  width: 0
+  height: 0
+  border-left: 15px solid transparent
+  border-right: 15px solid transparent
+  border-bottom: 15px solid #E9F5C9
+  margin-left: 79%
+
+textarea
+  min-height: 26px
+  resize: vertical
+
+input, select, textarea
+  display: block
+  width: 100%
+  font-size: 12px
+  line-height: 16px
+  border: 1px solid var(--color-line)
+  border-radius: 2px
+  padding: 4px 28px 4px 8px
+  outline: none
+  caret-color: var(--color-main)
+  color: var(--color-text-primary)
+  background-color: var(--color-base)
+  transition: border 0.25s
+  appearance: none
+  font-family: inherit
+
+  &.error
+    background: transparent !important
+    border-color: var(--color-alert)
+
+input:focus, select:focus, textarea:focus
+  border: 1px solid var(--color-main)
+
+input:disabled, select:disabled, textarea:disabled
+  color: var(--color-line)
+  border: 1px dashed var(--color-line)
+
+input
+  &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+    -webkit-appearance: none
+    margin: 0
+
+  &[type=number]
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+
+  &::placeholder
+    color: var(--color-line)
+
+select::placeholder, textarea::placeholder
+  color: var(--color-line)
+
+.input-date
+  width: 100%
+  max-width: 120px
+  background-image: url(/app/img/icons/calendar.svg)
+  background-repeat: no-repeat
+  background-size: 16px 16px
+  background-position: 95% 3px
+
+  &:focus
+    background-image: url(/app/img/icons/calendar-active.svg)
+
+.field-radio
+  $this: &
+  position: relative
+  cursor: pointer
+
+  &__label
+    display: block
+    position: relative
+    padding-left: 24px
+    font-size: 12px
+    line-height: 24px
+    min-height: 24px
+    &::before
+      content: ''
+      position: absolute
+      top: 3px
+      left: 0
+      width: 16px
+      height: 16px
+      border-radius: 50%
+      border: 1px solid var(--color-line)
+      transition: border 0.25s
+    
+
+    &::after
+      content: ''
+      position: absolute
+      left: 4px
+      top: 7px
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      background-color: var(--color-main)
+      opacity: 0
+      transition: opacity 0.25s
+
+  input[type="radio"]
+    position: absolute
+    visibility: hidden
+
+    &:checked
+      + #{$this}__label
+        &::before
+          border-color: var(--color-main)
+        &::after
+         opacity: 1 
+
+.field-checkbox
+  $this: &
+  display: inline-block
+  position: relative
+  cursor: pointer
+
+  &__label
+    display: block
+    position: relative
+    padding-left: 32px
+    font-size: 12px
+    line-height: 24px
+    min-height: 24px
+    &::before
+      content: ''
+      position: absolute
+      top: 5px
+      left: 0
+      width: 24px
+      height: 12px
+      border-radius: 16px
+      border: 1px solid var(--color-line)
+      transition: border 0.25s
+    
+
+    &::after
+      content: ''
+      position: absolute
+      left: 3px
+      top: 7px
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      background-color: var(--color-line)
+      transition: background-color 0.25s, transform 0.25s
+
+  input[type="checkbox"]
+    position: absolute
+    visibility: hidden
+
+    &:checked
+      + #{$this}__label
+        &::before
+          border-color: var(--color-main)
+        &::after
+         background-color: var(--color-main)
+         transform: translate(10px, 0)
+ 
+
+body
+  .pika-lendar
+    width: 216px
+    min-height: 152px
+    margin: 0
+    padding: 2px
+
+  .pika-single
+    border: 1px solid var(--color-main)
+    border-radius: 2px
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16)
+
+    &.is-bound
+      margin-top: 4px
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16)
+
+  .pika-label
+    font-size: 10px
+    line-height: 16px
+    font-weight: 400
+    color: var(--color-text-primary)
+
+  .pika-button
+    font-size: 10px
+    line-height: 16px
+    background: none
+    text-align: center
+    padding: 2.5px
+    border-radius: 2px
+
+    &:hover
+      background: var(--color-background)
+      font-weight: 400
+      color: var(--color-text-primary)
+
+  .is-today .pika-button
+    color: var(--color-main)
+
+  .is-selected .pika-button
+    background: var(--color-background)
+    box-shadow: none
+    border-radius: 2px
+    font-weight: 400
+    color: var(--color-text-primary)
+
+  .pika-prev, .pika-next
+    width: 16px
+    height: 16px
+    background-image: none
+    position: relative
+    top: 5px
+
+  .pika-prev:hover
+    &::before, &::after
+      background-color: var(--color-main)
+
+  .pika-next
+    &:hover
+      &::before, &::after
+        background-color: var(--color-main)
+
+    &::before, &::after
+      content: ''
+      position: absolute
+      top: 6px
+      left: 6px
+      background-color: var(--color-line)
+      width: 7px
+      height: 1px
+      transition: background-color 0.25s
+
+  .pika-prev
+    &::before, &::after
+      content: ''
+      position: absolute
+      top: 6px
+      left: 6px
+      background-color: var(--color-line)
+      width: 7px
+      height: 1px
+      transition: background-color 0.25s
+
+  .pika-next::after, .pika-prev::after
+    top: 10px
+    left: 6px
+
+  .pika-next
+    &::before
+      transform: rotate(45deg)
+
+    &::after
+      transform: rotate(-45deg)
+
+  .pika-prev
+    &::before
+      transform: rotate(-45deg)
+
+    &::after
+      transform: rotate(45deg)
+
+  .pika-table
+    th
+      color: var(--color-line)
+      font-size: 10px
+      line-height: 16px
+      font-weight: 400
+
+      abbr
+        border: none
+        text-decoration: none
+
+    .td, tr, .th > div, .td > div, tr > td
+      border: none
+
+  .pika-title select
+    padding: 0
+
+.errorMSG
+  color: var(--color-alert)
+  +clr
+  &_center
+    margin-left: 33.33%
+
+.bg
+  position: relative
+  display: inline-block
+  cursor: pointer
+  margin: 0px
+  padding: 0px
+  overflow-x: hidden
+
+.progress
+  height: 100%
+  width: 100%
+  top: 0px
+  left: 0px
+  margin: 0px
+  padding: 10px
+  position: absolute 
+
+.z-index1
+  z-index: 1
+
+.display_grid
+  display: grid
+
+.list
+  margin: 0 auto
+  width: 100%
+  max-width: 380px
+  user-select: none
+  &__item   
+    border-radius: 6px
+    background: var(--color-base)
+    display: flex
+    transition: box-shadow 200ms ease-out, opacity 200ms ease-out
+
+    &:not(:last-child)
+      margin-bottom: 7px
+
+    &.is-dragging
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.1)
+      opacity: 0.8
+      cursor: pointer
+
+  &__item-content
+    width: calc(100% - 20px - 20px)
+
+  &__item-title, 
+  &__item-description
+    white-space: nowrap
+    text-overflow: ellipsis
+    overflow: hidden
+
+  &__item-title
+    font-size: 12px
+    line-height: 24px
+    color: var(--color-text-primary)
+    text-align: left
+
+  &__item-description
+    font-size: 13px
+    color: var(--color-text-secondary)
+
+  &__item-handle
+    position: relative
+    width: 20px
+    cursor: pointer
+
+    &::before, &::after
+      content: ''
+      position: absolute
+      left: 3px
+      width: 10px
+      height: 1px
+      background-color: var(--color-line)
+
+    &::before
+      top: 10px
+
+    &::after
+      top: 13px
+
+  &__item-close
+    position: relative
+    width: 20px
+    cursor: pointer
+
+    &::before,
+    &::after
+      content: '' 
+      position: absolute
+      left: 2px
+      top: 4px
+      width: 16px
+      height: 16px
+      transition: opacity 0.25s
+
+    &::before
+      background-image: url(/app/img/icons/delete.svg)
+    
+    &::after
+      opacity: 0 
+      background-image: url(/app/img/icons/delete-active.svg)
+
+    &:hover
+      &::before
+       opacity: 0 
+      &::after
+        opacity: 1
+        

@@ -1,0 +1,43 @@
+.attachment
+    display: flex
+    align-items: center
+    &__name
+        width: 100%
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+        display: flex
+        align-items: center
+
+        .icon-button
+            flex-shrink: 0
+            margin-right: 5px
+
+        div, .link
+            overflow: hidden
+            white-space: nowrap
+            text-overflow: ellipsis
+    &__controls
+        display: flex
+        align-items: center
+        flex-shrink: 0
+    &__ext
+        font-weight: 600
+        width: 40px
+        text-align: right
+        flex-shrink: 0
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+    &__size
+        width: 70px
+        text-align: right
+        font-weight: 300
+        flex-shrink: 0
+        padding-right: 5px
+    &__signature
+        width: 22px
+        flex-shrink: 0
+    &__remove
+        width: 22px
+        flex-shrink: 0

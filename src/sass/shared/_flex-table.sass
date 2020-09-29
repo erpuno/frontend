@@ -1,0 +1,119 @@
+.flex-table
+    $this: &
+    position: relative    
+    display: block
+    height: 100%
+    max-height: 100%
+    user-select: none
+
+    &.is-with-scroll
+    
+        &::after
+            content: ''
+            position: absolute
+            left: 8px
+            bottom: 0
+            width: calc(100% - 16px)
+            height: 1px
+            background-color: var(--color-line)
+
+    &_roles
+        #{$this}__col
+            flex-grow: 0
+            &:nth-child(1)
+                width: calc((100% - 216px) * 0.4)
+            &:nth-child(2)
+                width: calc((100% - 216px) * 0.6)
+            &:nth-child(3)
+                width: 136px
+            &:nth-child(4)
+                width: 80px
+
+    h4
+        font-size: 16px
+        margin-bottom: 15px
+
+    &__head
+        display: block
+        position: sticky
+        top: 0
+        left: 0
+        z-index: 2
+
+    &__head-inner
+        display: block
+
+    &__inner
+        display: block
+        max-height: 100%
+        position: relative
+        padding-right: 8px
+        padding-left: 8px    
+    &__body
+        display: block
+    &__row
+        display: flex
+        border-left: 1px solid var(--color-line)
+        position: relative
+        &_head
+            position: sticky
+            top: 0
+            left: 0
+            width: 100%
+            border-top: 1px solid var(--color-line)
+            background-color: var(--color-background)
+            z-index: 2
+
+            #{$this}__col
+                overflow: hidden
+                white-space: nowrap
+                text-overflow: ellipsis
+
+        
+
+        &.hoverable
+            &:hover
+                cursor: pointer
+                background-color: var(--color-background)
+
+        &.is-selected
+            background-color: var(--color-background)
+
+
+
+    &__col
+        width: calc(100% / 6)
+        flex-grow: 1
+        padding: 4px 10px
+        font-size: 12px
+        line-height: 16px
+        border-right: 1px solid var(--color-line)
+        border-bottom: 1px solid var(--color-line)
+        word-break: break-word
+        display: block
+
+        &.column
+            float: none
+
+        &.text-right
+            text-align: right
+
+            input
+                margin-left: auto
+
+        &:first-child
+            flex-grow: 0
+            &:last-child
+                flex-grow: 1
+
+    &__edit
+        display: flex
+        align-items: center
+    &__input
+        flex-grow: 1
+        input
+            padding-right: 8px
+    
+    &__btns
+        white-space: nowrap
+        margin-left: 15px

@@ -1,0 +1,172 @@
+.doc-items-container
+    max-height: 100%
+    display: block
+    position: relative
+    border-radius: 2px
+    border: 1px solid var(--color-line)
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16)
+
+    .doc-item-desc,
+    .doc-item-options,
+    .doc-task-options
+        box-shadow: none
+        border: none
+
+    .ps__rail-y
+        margin-top: 2px
+        margin-bottom: 2px
+        z-index: 2
+
+    &__inner
+        display: block
+
+.new-doc
+    padding-top: 10px
+    position: relative
+    height: 100%
+    &::before
+       top: 0
+    &::after
+       bottom: 0
+
+    &::before,
+    &::after
+       display: none
+       content: ''
+       position: absolute
+       left: 16px
+       right: 16px
+       height: 1px
+       background-color: var(--color-line)
+    
+    &.is-with-scroll
+        &::before, &::after
+            display: block
+   
+    &__inner
+        position: relative
+        height: 100%
+        padding: 4px 16px
+    
+    &__select
+        margin-bottom: 10px
+
+    &__select
+
+
+.monitor-search-input
+    width: 50%
+    margin-left: auto
+    margin-bottom: 10px
+    margin-right: 10px
+// .doc-select
+//     &.is-hidden
+//         display: none
+     
+    
+.doc-item-desc
+    $this: &
+    display: block
+    border-left: 1px solid var(--color-line)
+    border-right: 1px solid var(--color-line)
+    background-color: var(--color-base)
+    position: relative
+    &::before
+        content: ''
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        box-shadow: 0px 0 4px rgba(0, 0, 0, 0.16)
+    
+    &::after
+       content: ''
+       position: absolute
+       bottom: -2px
+       width: 100%
+       height: 4px
+       background-color: var(--color-base)
+       z-index: 1
+
+    &__inner
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 4px 8px
+
+    &__text
+        width: 100%
+        display: flex
+        align-items: center
+        width: 100%
+
+    &__desc
+        padding-left: 5px
+        padding-right: 5px
+        .sec_label
+            word-break: break-word
+            cursor: inherit
+
+        .button
+            &:first-of-type
+                margin-left: 5px
+
+    &__title
+        word-break: break-word
+    
+    &__num
+        font-weight: 600
+        margin-right: 5px
+
+    &__controls
+        flex-shrink: 0
+        display: flex
+        font-size: 0
+        .icon-button
+            &:not(:last-child)
+                margin-right: 5px
+    &_single
+        cursor: pointer
+
+        &:hover,
+        &.selected_row
+            background-color: var(--color-background)
+
+
+.doc-item-options
+    background-color: var(--color-base)
+    display: block
+    border-left: 1px solid var(--color-line)
+    border-right: 1px solid var(--color-line)
+    border-bottom: 1px solid var(--color-line)
+    padding-top: 10px
+    padding-left: 4px
+    padding-right: 4px
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16)
+    padding-bottom: 8px
+    border-radius: 2px
+
+    + .doc-task-options
+        margin-top: -1px
+
+.doc-task-options
+    position: relative
+    background-color: var(--color-base)
+    display: block
+    border-left: 1px solid var(--color-line)
+    border-right: 1px solid var(--color-line)
+    border-bottom: 1px solid var(--color-line)
+    border-radius: 0 0 4px 4px
+    padding-left: 8px
+    padding-right: 8px
+    padding-top: 10px
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16)
+    z-index: 1
+
+    &__title
+        margin-bottom: 5px
+
+    &__btn
+        margin-left: -4px
+        margin-bottom: 5px

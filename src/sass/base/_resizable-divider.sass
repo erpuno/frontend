@@ -1,0 +1,72 @@
+.resizable-divider
+    position: relative
+    user-select: none
+    transition: border 0.25s
+    cursor: col-resize
+    border-left: 2px solid var(--color-line)
+    z-index: 2
+    width: 2px
+    height: 100%
+    &.is-horizontal
+        cursor: row-resize
+        border-left: none
+        border-top: 2px solid var(--color-line)
+        width: 100%
+        height: 2px
+        z-index: 1
+    &.is-active
+        border-color: var(--color-main)
+    &__btn
+        position: absolute
+        left: 6px !important
+        top: 50%
+        transform: translate(-50%, 0)
+        width: 12px !important
+        height: 24px !important
+        overflow: hidden
+        cursor: pointer
+        z-index: 100
+        font-size: 0
+
+        &.is-hidden
+            display: none
+        &::before, &::after
+            content: ''
+            position: absolute
+            left: 0
+            top: 0
+            width: 5px
+            height: 1px
+            background-color: var(--color-line)
+            z-index: 1
+
+        &::before
+            left: 3px
+            top: 10px
+            transform: rotate(45deg)
+
+        &::after
+            top: 13px
+            left: 3px
+            transform: rotate(-45deg)
+        
+        span
+            display: block
+            position: relative
+            left: -12px !important
+            width: 24px
+            height: 24px
+            border-radius: 50%
+            background-color: var(--color-line-light)
+
+        &_first
+            left: -8px !important
+            &::before
+                left: 5px
+                transform: rotate(-45deg)
+
+            &::after
+                left: 5px
+                transform: rotate(45deg)
+            span
+                left: 0 !important 

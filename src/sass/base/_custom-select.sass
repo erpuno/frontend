@@ -1,0 +1,126 @@
+/* SELECTS -------------------------------------------- */ 
+
+.custom-select
+    $this: &
+    display: block
+    width: 100%
+    font-size: 12px
+    line-height: 16px    
+    color: var(--color-text-primary)
+    transition: border 0.25s
+    background-color: transparent
+    position: relative
+    height: 27px
+    z-index: 2
+    &::before
+        content: ''
+        position: absolute
+        left: -4px
+        top: -4px
+        width: calc(100% + 8px)
+        height: calc(100% + 8px)
+        border: 1px dashed var(--color-main)
+        border-radius: 2px
+        display: none
+
+    
+    
+    &.is-inactive
+        #{$this}__wrapper
+            border-style: dashed
+
+        #{$this}__selected
+            color: var(--color-line)
+            cursor: default
+            &::after
+                display: none
+            
+
+    &.is-active
+        #{$this}__wrapper
+            border-color: var(--color-main)
+
+        #{$this}__selected
+            color: var(--color-text-primary)
+            &::after
+                border-top: 5px solid var(--color-main)
+
+    &.is-open 
+        z-index: 3       
+        #{$this}__wrapper
+            border-color: var(--color-main)
+        #{$this}__options
+            border-top: 1px solid var(--color-line)
+            max-height: none
+            display: block
+        
+        #{$this}__selected
+            &::after
+                top: 5px
+                border-top: 5px solid transparent
+                border-bottom: 5px solid var(--color-main)
+
+        &.is-reversed
+            #{$this}__wrapper
+                overflow: visible
+            #{$this}__options
+                position: absolute
+                top: auto
+                bottom: calc(100% - 1px)
+                background-color: var(--color-base)
+                border: 1px solid var(--color-main)
+                border-bottom: 1px solid var( --color-line)
+                border-radius: 2px 2px 0 0
+    
+    &.is-focused
+        &::before
+            display: block
+
+    
+    
+    &__wrapper
+        border: 1px solid var(--color-line)
+        border-radius: 2px
+        overflow: hidden
+        background-color: var(--color-base)
+
+    &__options        
+        position: relative
+        left: 0
+        top: 1px
+        width: 100%
+        max-height: 0
+
+    &__selected,
+    &__option
+        padding: 4px 8px 4px 8px
+        display: block
+        width: 100%
+        text-align: left
+        min-height: 24px
+        
+
+    &__selected
+        height: 24px
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+    
+    &__selected
+        position: relative
+        color: var(--color-line)
+        padding-right: 25px
+        &::after
+           content: ''
+           position: absolute
+           right: 13px
+           top: 10px 
+           border: 5px solid transparent
+           border-top: 5px solid var(--color-line)
+    
+    &__option
+        border-bottom: 1px solid var(--color-line-light)
+        color: rgba(var(--color-text-primary), 0.56)
+        &:hover, &:focus
+            background-color: var(--color-line-light)
+            color: var(--color-text-primary)

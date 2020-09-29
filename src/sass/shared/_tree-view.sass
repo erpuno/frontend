@@ -1,0 +1,110 @@
+.tree-view
+    $this: &
+    padding: 16px 10px
+
+    &__title
+        font-size: 14px
+        line-height: 16px
+        margin-bottom: 4px
+
+    &__branch
+        > div
+            margin-top: 4px
+
+    &__nested,
+    &__branch
+        position: relative
+        &::after
+            content: ''
+            position: absolute
+            left: 6px
+            top: 22px
+            bottom: 8px
+            width: 1px
+            background-color: var(--color-line)
+    &__nested
+        margin-left: 15px
+
+        &:last-child
+            > #{$this}__row
+                &.expanded
+                    &::before
+                        border-left: transparent
+                        top: 8px
+                &:not(.expanded)
+                    > #{$this}__link
+                        &::after
+                            content: ''
+                            position: absolute
+                            top: 8px
+                            left: -9px
+                            width: 1px
+                            bottom: 0
+                            background-color: var(--color-base)
+                            z-index: 1
+    &__row
+        display: flex        
+        margin-bottom: 4px
+
+        .tree-button
+            position: absolute
+            left: 0
+            top: 2px
+            z-index: 2
+
+        &.expanded
+            &::before
+                content: ''
+                position: absolute
+                left: -9px
+                top: 22px
+                bottom: 8px
+                width: 2px
+                background-color: red
+                z-index: 10
+                background-color: var(--color-base)
+                border-left: 1px dashed var(--color-line)
+            &::after
+                content: ''
+                position: absolute
+                left: 6px
+                top: 22px
+                bottom: 8px
+                width: 1px
+                background-color: var(--color-line)
+    &__link
+        font-size: 12px
+        line-height: 16px
+        padding-left: 18px
+        position: relative
+        z-index: 1
+        cursor: pointer
+
+        &::before
+            content: ''
+            position: absolute
+            top: 7px
+            left: -9px
+            height: 1px
+            width: 10px
+            background-color: var(--color-line)
+        
+        &.selected_row
+            color: var(--color-base)
+
+            #{$this}__link-selection
+                display: block
+    
+    &__link-selection
+        position: absolute
+        left: 12px
+        top: -1px
+        width: calc(100% - 4px)
+        height: calc(100% + 2px)
+        border-radius: 2px
+        background-color: var(--color-main)
+        z-index: -1
+        display: none
+    
+    &__count
+        color: var(--color-line)

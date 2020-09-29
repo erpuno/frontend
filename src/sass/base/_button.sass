@@ -1,0 +1,194 @@
+/* BUTTONS -------------------------------------------- */ 
+
+.button
+    $this: &
+    min-height: 36px
+    min-width: 43px
+    display: inline-block
+    text-decoration: none
+    padding: 9px 12px
+    font-size: 12px
+    outline: none
+    border: 1px dotted transparent
+    position: relative
+    z-index: 1
+    border-radius: 2px
+
+    &:empty
+        display: none
+   
+    &::before
+        content: ''
+        position: absolute
+        top: 2px
+        left: 2px
+        width: calc(100% - 4px)
+        height: calc(100% - 4px)
+        border-radius: 2px
+        transition: background-color 0.25s, opacity 0.25s, box-shadow 0.25s, background-size 0.35s
+        z-index: -2
+        background-size: 50% 100%
+        background-position: center center
+        background-repeat: no-repeat
+        background-image: none
+    
+    &:hover
+        &::before
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16)
+            opacity: 0.84
+
+    &:focus
+        &::before
+            opacity: 1
+        &:active
+            border-color: transparent
+            
+    &:active
+        border-color: transparent
+        &::before
+            background-size: 200% 100%
+
+    
+
+    &_primary
+        color: var(--color-base)
+
+        &::before
+            background-color: var(--color-main)
+
+        &:focus
+            border-color:  var(--color-main)
+
+        &:active
+            &::before
+                background-color: var(--color-main-light)
+                background-image: radial-gradient(circle at center, var(--color-main) 0%, var(--color-main) 50%, rgba(255, 255, 255, 0) 51%, rgba(255, 255, 255, 0) 100%)
+        
+        &:disabled,
+        &.is-inactive
+            &::before
+                background-color: var(--color-main)
+
+
+    &_alert
+        color: var(--color-base)
+     
+
+        &::before
+            background-color: var(--color-alert)
+        
+        &:focus
+            border-color: var(--color-alert)
+
+        &:active
+            &::before
+                background-color: var(--color-alert-light)
+                background-image: radial-gradient(circle at center, var(--color-alert) 0%, var(--color-alert) 50%, rgba(255, 255, 255, 0) 51%, rgba(255, 255, 255, 0) 100%)
+        
+        &:disabled,
+        &.is-inactive
+            &::before
+                background-color: var(--color-alert)
+    
+    &_secondary
+        color: var(--color-text-primary)
+       
+        &::before
+            background-color: var(--color-background)
+        
+        &:focus
+            border-color: var(--color-background)
+
+        &:active
+            &::before
+                background-color: var(--color-line)
+                background-image: radial-gradient(circle at center, var(--color-background) 0%, var(--color-background) 50%, rgba(255, 255, 255, 0) 51%, rgba(255, 255, 255, 0) 100%)
+        
+        &:disabled,
+        &.is-inactive
+            &::before
+                background-color: var(--color-background)
+    
+    &_blank
+        min-height: 32px
+        padding: 7px 12px
+        color: var(--color-main)
+
+        &::before
+            background-color: var(--color-base)
+            border: 1px solid var(--color-main)
+        
+        &:focus
+            border-color: var(--color-main)
+
+    &_col_3
+        margin-right: calc(20% - 2px)
+
+    &_icon
+        padding-left: 32px
+        &::after
+           content: ''
+           position: absolute
+           left: 12px
+           top: 50%
+           transform: translateY(-50%)
+           width: 16px
+           height: 16px
+           background-size: contain
+           background-position: center center
+           background-repeat: no-repeat
+    
+        &_add
+            &::after
+                background-image: url(/app/img/icons/add-white.svg)
+
+            &#{$this}_blank
+                &::after
+                    background-image: url(/app/img/icons/add.svg)
+        
+        &_edit
+            &::after
+                background-image: url(/app/img/icons/edit-white.svg)
+
+            &#{$this}_blank
+                &::after
+                    background-image: url(/app/img/icons/edit.svg)
+        
+        &_arrow_down
+            &#{$this}_blank
+                &::after
+                    background-size: 12px 12px
+                    background-image: url(/app/img/icons/arrow-down.svg)
+
+        &_arrow_up
+            &#{$this}_blank
+                &::after
+                    background-size: 12px 12px
+                    background-image: url(/app/img/icons/arrow-up.svg)
+    
+    &_icon_only
+        padding-left: 12px
+        &:empty
+            display: inline-block
+
+    &:disabled,
+    &.is-inactive
+        cursor: default
+        &::before
+            opacity: 0.14
+        &::after
+           opacity: 0 
+        &:focus
+            border-color: transparent
+
+#subexecutors_bizTask_create,
+#notify_bizTask_create,
+#signatory_orgDoc_create,
+#target_orgDoc_create,
+#approvers_outputOrder_create,
+#signatory_internalDoc_create,
+#signatory_additionalDoc_create,
+.roles-dropdown-col .box div:nth-child(2) > div
+    > div
+        align-items: center !important
+    +dropdownFix

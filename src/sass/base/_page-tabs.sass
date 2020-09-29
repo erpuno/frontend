@@ -1,0 +1,32 @@
+.page-tabs
+  $this: &
+  margin-top: -32px
+  margin-bottom: -32px
+  height: calc(100vh - 42px)
+  position: relative
+  z-index: 1
+  overflow: hidden
+  &__inner
+    display: flex
+    height: 100%
+  &__left,
+  &__right
+    height: 100%
+    overflow: hidden
+    flex-grow: 1
+
+    &.is-hidden
+      display: none
+
+  &_with-rows
+    #{$this}__left,
+    #{$this}__right
+      background-color: var(--color-background)
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+      &.is-hidden
+        display: none
+    
+

@@ -1,0 +1,213 @@
+.monitor_table
+  $this: &
+  display: block
+  width: 100%
+  position: relative
+  height: calc(100% - 40px)
+  &::before,
+  &::after
+    content: ''
+    position: absolute
+    height: 1px
+    left: 6px
+    right: 10px
+    background-color: var(--color-line)
+    z-index: 1
+
+  &::before
+    top: 0
+
+  &::after
+    bottom: 0
+    display: none
+
+  &.is-with-scroll
+    &::after
+      display: block 
+  
+
+  &__inner
+    display: block
+    width: 100%
+    min-height: 70px
+    min-width: 430px
+    position: relative
+    height: 100%
+    padding-left: 6px
+    padding-right: 10px
+    &::before
+      content: ''
+      position: absolute
+      left: 6px
+      right: 10px
+      top: 0
+      height: 1px
+      background-color: var(--color-line)
+
+  &__rows
+    position: relative
+    display: block
+
+  
+  &__process-info
+    width: 100%
+    height: calc(100% + 1px)
+    top: -1px
+    border-top: 1px solid var(--color-line)
+    border-left: 1px solid var(--color-line)
+    word-break: break-word
+    margin-left: -18px
+    position: relative
+    padding: 10px 12px
+
+    &::before
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      height: 1px
+      background-color: var(--color-line)
+
+    &::after
+      content: ''
+      position: absolute
+      top: 50%
+      left: -10px
+      width: 10px
+      height: 2px
+      border-top: 1px dashed var(--color-line)
+
+
+  &__row
+    display: flex
+    width: 100%
+
+    &.selected_row
+      #{$this}__col
+          &:first-child
+            #{$this}__process-info
+              background-color: var(--color-background)
+          &:not(:first-child)
+            background-color: var(--color-background)
+
+    &.hoverable
+      cursor: pointer
+      &:hover
+        #{$this}__col
+          &:first-child
+            #{$this}__process-info
+              background-color: var(--color-background)
+          &:not(:first-child)
+            background-color: var(--color-background)
+
+    &.no-expand
+      #{$this}__process-info
+        margin-left: -10px
+      #{$this}__btn-placeholder
+        display: block
+
+    &.is-collapsed
+      .tree-button
+        top: 0
+        &::after, &::before
+          display: none
+
+    &:first-child
+      #{$this}__process-info
+        &::after
+          display: none
+
+    &.expand
+
+      + #{$this}__row
+        #{$this}__process-info
+          &::after
+            display: none          
+        #{$this}__tree-vertical
+          &:last-child
+            height: calc(100% - 15px)
+
+      + #{$this}__row
+          #{$this}__tree-vertical
+            &.is-half
+              border-left: 1px dashed transparent
+  &__col
+    position: relative
+    display: flex
+
+    &:nth-child(1)
+      width: 180px
+      flex-shrink: 0
+    &:nth-child(2)
+      width: calc(100% - 380px)
+      border-left: 1px dashed var(--color-line)
+      overflow: hidden
+    &:nth-child(3)
+      width: 130px
+      flex-shrink: 0
+      border-left: 1px dashed var(--color-line)
+    &:nth-child(4)
+      width: 70px
+      flex-shrink: 0
+      border-left: 1px dashed var(--color-line)
+
+    
+    &:not(:first-child)
+      padding: 10px 12px
+      border-bottom: 1px solid var(--color-line)
+    
+    &:last-child
+      border-right: 1px solid var(--color-line)
+
+  &__verticals
+    display: flex
+    height: 100%
+    flex-shrink: 0
+    
+  &__controls
+    display: flex
+    align-self: center
+  
+  &__tree-vertical 
+    width: 12px
+    height: 100%
+    flex-shrink: 0
+    border-left: 1px dashed var(--color-line)
+    align-self: flex-end
+    &.is-invisible
+      border-left: 1px dashed transparent
+    &.is-half
+      height: 50%
+      align-self: flex-start
+
+  &__btn-placeholder
+    display: none
+    width: 10px
+    flex-shrink: 0
+
+  .tree-button
+    background-color: var(--color-base)
+    align-self: flex-end
+    top: 20px
+    left: -5px
+    z-index: 1
+    flex-shrink: 0
+
+    &::before
+      content: ''
+      position: absolute
+      top: -10px
+      left: 3px
+      height: 9px
+      width: 2px
+      border-right: 1px dashed var(--color-line)
+
+    &::after
+      content: ''
+      position: absolute
+      top: 5px
+      left: 11px
+      height: 2px
+      width: 6px
+      border-top: 1px dashed var(--color-line)

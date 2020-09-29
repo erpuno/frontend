@@ -1,0 +1,147 @@
+.tabset
+    $this: &
+    height: 100%
+
+    &_expandable
+        height: auto
+        transition: flex-grow 0.4s, max-height 0.4s
+        max-height: 100vh
+        overflow: hidden
+        min-height: 50px
+
+        #{$this}__panels
+            overflow: hidden
+
+        #{$this}__panel-inner
+            height: 100%
+
+        &:last-of-type
+            flex-grow: 1
+            #{$this}__panel
+                height: calc(100% - 32px)
+
+        &:not(:last-of-type)
+            max-height: 50%
+            margin-bottom: 10px
+
+            &.is-dragging
+                max-height: 100vh
+
+            &.is-collapsed
+                max-height: 50px
+
+        &.is-collapsed
+            max-height: 50px
+
+        &.is-hidden
+            #{$this}__btn
+                background-image: url(/app/img/icons/arrow-up.svg)
+        
+        &.is-fullheight
+            max-height: calc(100vh - 100px)
+
+        &.no-transition
+            transition: none
+    &__nav
+        padding: 4px 8px 0 8px
+        display: flex
+        background-color: var(--color-background)
+        overflow: hidden
+        position: relative
+        user-select: none
+        .ps__rail-x
+            opacity: 1
+            background-color: transparent
+  
+    &__btn
+        position: relative
+        display: inline-block
+        padding: 6px 10px
+        flex-shrink: 0
+        color: var(--color-text-primary)
+        font-size: 12px
+        line-height: 16px
+        font-weight: 400        
+        &::before
+           content: ''
+           position: absolute
+           left: 6px
+           right: 6px
+           bottom: 4px
+           opacity: 0
+           border-bottom: 1px dashed var(--color-text-primary)
+        &.is-active
+            background-color: var(--color-base)
+            color: var(--color-main)
+            border-radius: 4px 5px 0px 0px
+            &::before
+                border-bottom: 1px dashed var(--color-main)
+        
+        &.is-disabled
+            color: var(--color-text-secondary)
+            cursor: default
+
+        &.is-expanded,
+        &.is-collapsed
+           padding-left: 20px
+           background-position: 7px 10px
+           background-repeat: no-repeat
+           background-size: 10px 9px
+
+        &.is-expanded
+            background-image: url(/app/img/icons/arrow-down.svg)
+            &::before
+                display: none
+        
+        &.is-collapsed
+            background-image: url(/app/img/icons/arrow-up.svg)
+            &::before
+                display: none
+
+        
+        &:focus
+            &::before
+               opacity: 1
+
+            &:active
+                &::before
+                    opacity: 0 
+
+        &.is-clicked
+            &::before
+               opacity: 0 
+
+
+    &__panel
+        height: 100%
+        display: none
+        padding: 18px 12px 0
+        background-color: var(--color-base)
+        flex-direction: column
+
+        &.is-active
+            display: flex
+
+        &_pb
+            padding-bottom: 18px
+    
+    &__panel-inner
+        height: calc(100vh - 110px)
+    
+    &__panels
+        height: calc(100% - 32px)
+
+    &__docs
+        position: relative
+        height: calc(100% - 18px)
+        iframe
+            width: 100%
+            height: 100%
+    
+    &__journal
+        margin-bottom: 18px
+        height: 100%
+        overflow: auto
+
+    &__iframe
+        height: 100%

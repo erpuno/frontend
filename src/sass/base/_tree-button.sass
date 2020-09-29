@@ -1,0 +1,26 @@
+.tree-button
+  display: inline-block
+  border: 1px solid var(--color-line)
+  border-radius: 2px
+  background-color: var(--color-base)
+  width: 12px
+  height: 12px
+  line-height: 10px
+  text-align: center
+  margin-right: 6px
+  color: var(--color-line)
+  outline: none
+  position: relative
+
+  &.expanded
+    color: var(--color-main)
+    border-color: var(--color-main)
+
+    &::after
+      content: ''
+      position: absolute
+      top: 100%
+      left: 5px
+      height: 10px
+      width: 1px
+      background-color: var(--color-line)

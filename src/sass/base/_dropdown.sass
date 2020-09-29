@@ -1,0 +1,179 @@
+/* DROPDOWNS -------------------------------------------- */ 
+
+.dropdown
+  $this: &
+  width: 100%
+  position: relative
+  display: inline-block
+
+  + #{$this}-content
+    display: none !important
+
+    &.is-visible
+      position: relative
+      display: block !important
+      overflow: visible
+
+      [style*="display: flex"] > &
+        margin-left: -100%
+
+      #{$this}-item
+        overflow: visible
+
+  &.is-open
+    z-index: 3
+    input
+      border: 1px solid var(--color-main)
+
+      border-radius: 2px 2px 0 0
+
+    #{$this}-content
+        border: 1px solid var(--color-main)
+        border-top: 1px solid var(--color-line-light)
+
+    .triangle
+      &::before
+        transform: rotate(180deg) translate(0, 5px)
+        border-top: 5px solid var(--color-main)
+
+  &.is-active
+    input
+        border: 1px solid var(--color-main)
+        
+
+    #{$this}-content
+        border: 1px solid var(--color-main)
+        border-top: 1px solid var(--color-line-light)
+    .triangle
+      &::before
+        border-top: 5px solid var(--color-main)
+
+      
+  &-content
+    position: absolute
+    overflow: hidden
+    background-color: var(--color-base)
+    width: 100%
+    display: none
+    max-height: 0
+    margin-top: 25px
+    padding: 0
+    z-index: 2
+    color: rgba(var(--color-text-primary), 0.56)
+    border: 1px solid var(--color-line)
+    border-top: 1px solid transparent
+    border-radius: 0 0 2px 2px
+    font-family: 'Open Sans', sans-serif
+    display: none !important
+
+
+    &:empty
+      display: none
+
+    
+    
+    &.is-open, &.is-visible
+      display: block !important
+      max-height: none
+      z-index: 3
+      border: 1px solid var(--color-main)
+      border-top: 1px solid var(--color-line-light)
+
+      #{$this}-item
+        pointer-events: auto
+        &:not(:first-of-type)
+          border-top: 1px solid var(--color-line-light)
+        &.focus
+          background: var(--color-line-light)
+          color: var(--color-text-primary)
+
+    &.is-reversed
+      margin-top: 0
+      bottom: calc(100% - 1px)
+      border-radius: 2px 2px 0 0
+      border-top: 1px solid var(--color-line)
+      border-bottom: 1px solid transparent
+
+      &.is-open
+        border-top: 1px solid var(--color-main)
+        border-bottom: 1px solid var(--color-line-light)
+    
+  &-item
+    pointer-events: none
+    background-color: var(--color-base)
+    padding: 4px 8px
+    font-size: 12px
+    line-height: 16px
+    border-top: 1px solid transparent
+    text-align: center
+    word-break: break-word
+    cursor: pointer
+    overflow: hidden
+    text-align: left
+    +clr
+    
+    img
+      max-height: 30px
+      width: auto
+      float: left
+      margin-right: 10px
+
+    .form
+      cursor: default
+
+      .buttons
+        margin-bottom: 0
+        margin-top: 0
+
+    .ps__thumb-x
+      display: none
+  
+  .triangle
+    position: absolute
+    top: 0
+    right: 0
+    width: 25px
+    height: 100%
+    font-size: 0
+    &::before
+      content: ''
+      position: absolute
+      top: 11px
+      right: 14px
+      width: 0
+      height: 0
+      border: 5px solid transparent
+      border-top: 5px solid var(--color-line)
+      cursor: pointer
+      transition: border 0.25s
+
+  input
+    &:focus 
+      + .triangle
+        &::before
+          border-top: 5px solid var(--color-main)
+        + #{$this}-content
+          border: 1px solid var(--color-main)
+          border-top: 1px solid var(--color-line-light)
+
+  input
+    &.error 
+      + .triangle
+        &::before
+          border-top: 5px solid var(--color-alert)
+
+        + #{$this}-content
+          border: 1px solid var(--color-alert)
+          border-top: none
+  
+  input
+    &:disabled
+      + .triangle
+        &::before
+          cursor: default
+      
+        + #{$this}-content
+           display: none
+
+
+
